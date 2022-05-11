@@ -1,21 +1,24 @@
 from ics import Calendar, Event
+import requests
 
-cal_name = "Combined calendar export"
+new_cal_name = "busycal_export"
 
-c = Calendar()
-c.creator = cal_name # Defines PRODID
+ext_ics_url = ""
+ext_cal = Calendar(requests.get(ext_ics_url).text)
 
-e = Event()
-e.name = "Dinner with Mum"
-e.begin = '2023-01-01 00:00:00'
-c.events.add(e)
+new_cal = Calendar()
+new_cal.creator = new_cal_name # Defines PRODID
 
-e2 = Event()
-e2.name = "Dinner with Dad"
-e2.begin = '2023-02-02 00:00:00'
-c.events.add(e2)
+# Example Event to add to the Calendar
+example_event = Event()
+example_event.name = "Family Dinner Example Event"
+example_event.begin = '2023-01-01 00:00:00'
+new_cal.events.add(example_event)
 
-c.events
 
-with open('%s.ics' % cal_name, 'w') as my_file:
-    my_file.writelines(c)
+# Add each event from the set of external calendar events to the new one
+for event in ext_cal.events:
+	new_cal.events.add(event)
+
+with open('%s.ics' % new_cal_name, 'w') as my_file:
+    my_file.writelines(new_cal)
