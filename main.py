@@ -24,8 +24,11 @@ for ics_url in ext_ics_urls:
 	ext_cal = Calendar(requests.get(ics_url).text)
 	for ext_event in ext_cal.events:
 
+		# Remove possibly sensitive information if user wants privacy
 		if privacy == True:
-			ext_event.name = "Busy as a bee!"
+			ext_event.name = "Busy as a bee!" # Defines SUMMARY
+			ext_event.description = ""
+			ext_event.location = ""
 
 		new_cal.events.add(ext_event)
 
