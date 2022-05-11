@@ -1,6 +1,9 @@
 from ics import Calendar, Event
 
+cal_name = "Combined calendar export"
+
 c = Calendar()
+c.creator = cal_name # Defines PRODID
 
 e = Event()
 e.name = "Dinner with Mum"
@@ -14,5 +17,5 @@ c.events.add(e2)
 
 c.events
 
-with open('my.ics', 'w') as my_file:
+with open('%s.ics' % cal_name, 'w') as my_file:
     my_file.writelines(c)
