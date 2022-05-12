@@ -1,5 +1,5 @@
 # busycal
-Combining subscribable iCals to publish a public iCal for yourself that respects your privacy settings
+Combine subscribe-able calendars to publish a public calendar for yourself that respects your privacy
 
 ## Getting up and running
 
