@@ -26,7 +26,7 @@ $ pip install flask
 $ pip install python-dotenv
 ```
 
-### 4. Create `.env` file
+### 4. Create `.env` file (if you haven't already)
 
 - Duplicate `.env.example` and rename copy to `.env`
 - Make changes to `.env` as required
