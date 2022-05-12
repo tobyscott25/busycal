@@ -6,10 +6,10 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/<string:name>/')
+@app.route('/<string:name>')
 def hello(name):
 
-	abort(404, description="Resource not found")
+	# abort(404, description="Resource not found")
 
 	out = "Hello " + name
 	return jsonify(out), 200
