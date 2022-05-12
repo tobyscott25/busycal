@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, request, make_response
 from werkzeug.exceptions import HTTPException
 import json
 
@@ -6,13 +6,20 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/<string:name>')
+@app.route('/<string:name>', methods=['GET', 'POST'])
 def hello(name):
 
 	# abort(404, description="Resource not found")
 
-	out = "Hello " + name
-	return jsonify(out), 200
+	print(request.get_data())
+
+	response = make_response(jsonify(
+		"Hello " + name
+	), 200)
+
+	response.headers['X-Something'] = 'A value'
+
+	return response
 
 
 @app.errorhandler(HTTPException)
@@ -28,14 +35,6 @@ def handle_exception(error):
 	# Set the content type header to idicate JSON
 	response.content_type = "application/json"
 	return response
-
-# For specific errors
-# @app.errorhandler(405)
-# def handle_error(error):
-# 	return {
-# 		"code": 405,
-# 		"name": "Method Not Allowed"
-# 	}, 405
 
 
 # Ensures the Flask app runs only when executed in the main file and not when imported in some other file
