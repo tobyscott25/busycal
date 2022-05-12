@@ -36,15 +36,5 @@ $ pip install python-dotenv
 ## Run the Development Server
 
 ```sh
-# MacOS & Linux
-
-$ export FLASK_APP=main
 $ flask run
-```
-
-```sh
-# Windows Powershell
-
-> $env:FLASK_APP = "main"
-> flask run
 ```
