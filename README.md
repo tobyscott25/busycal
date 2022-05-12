@@ -1,28 +1,37 @@
 # busycal
 Combining subscribable iCals to publish a public iCal for yourself that respects your privacy settings
 
-## Install
+## Getting up and running
 
-Create virtualenv and activate it:
+### 1. Create virtualenv (if you haven't already)
+```sh
+$ python3 -m venv venv
+```
+
+### 2. Activate the virtualenv
 
 ```sh
 # MacOS & Linux
-
-$ python3 -m venv venv
 $ . venv/bin/activate
 ```
 ```sh
 # Windows Powershell
-
-> python3 -m venv venv
-> venv\Scripts\activate.bat
+> venv\Scripts\activate
 ```
 
-Install dependancies within the virtualenv
+### 3. Install dependancies within the virtualenv (if you haven't already)
 
 ```
 $ pip install flask
+$ pip install python-dotenv
 ```
+
+### 4. Create `.env` file
+
+- Duplicate `.env.example` and rename copy to `.env`
+- Make changes to `.env` as required
+
+
 
 ## Run the Development Server
 
