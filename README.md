@@ -24,6 +24,7 @@ $ . venv/bin/activate
 ```
 $ pip install flask
 $ pip install python-dotenv
+$ pip install ics
 ```
 
 ### 4. Create `.env` file (if you haven't already)
