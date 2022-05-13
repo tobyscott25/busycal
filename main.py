@@ -6,20 +6,27 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/<string:name>', methods=['GET', 'POST'])
+
+@app.route('/', methods=['GET', 'POST'])
+def root():
+
+	print(request.json)
+	
+	body = 'HAVE A CALENDAR'
+	headers = { "Content-Type": "text/calendar" }
+	return make_response(body, 200, headers)
+
+
+@app.route('/<string:name>')
 def hello(name):
 
-	# abort(404, description="Resource not found")
+	abort(404, description="Resource not found")
 
-	print(request.get_data())
-
-	response = make_response(jsonify(
+	headers = { "Content-Type": "application/json" }
+	body = jsonify(
 		"Hello " + name
-	), 200)
-
-	response.headers['X-Something'] = 'A value'
-
-	return response
+	)
+	return make_response(body, 200, headers)
 
 
 @app.errorhandler(HTTPException)
