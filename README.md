@@ -1,7 +1,7 @@
 # busycal
 Combine subscribe-able calendars to publish a public calendar of your own that respects your privacy
 
-## Getting up and running
+## Install
 
 ### 1. Create virtualenv (if you haven't already)
 ```sh
@@ -40,3 +40,29 @@ $ pip install requests
 ```sh
 $ flask run
 ```
+
+
+## Usage
+
+Send a HTTP `POST` request to the flask development server (usually `http://localhost:5000`)
+
+Required headers:
+```
+Content-Type: application/json
+```
+JSON body data
+```json
+[
+	"first_ics_url",
+	"second_ics_url",
+	// add as many as you like ...
+]
+```
+
+You will get a response with the combined following header 
+
+```
+Content-Type: text/calendar
+```
+
+Enjoy!

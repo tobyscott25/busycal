@@ -22,6 +22,8 @@ def root():
 		return make_response(body, 200, headers)
 
 	else:
+
+		# This is here to be displayed if somebody opens the flask dev server in a browser without reading the docs.
 		
 		body = "Hit this with a POST request to get a combined calendar. Read the project's README.md"
 
