@@ -31,14 +31,3 @@ def combine_ics(ics_urls):
 			combined_calendar.events.add(ext_event)
 
 	return combined_calendar
-
-
-
-
-# Array of .ics and .ical URLS to include in the export
-ics_urls = []
-
-print(combine_ics(ics_urls))
-
-# with open('%s.ics' % combined_calendar_name, 'w') as export_file:
-# 	export_file.writelines(combined_calendar)

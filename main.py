@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, abort, request, make_response
 from werkzeug.exceptions import HTTPException
 import json
+import ics_combiner
 
 # Create an instance of the class
 app = Flask(__name__)
@@ -10,11 +11,13 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def root():
 
-	print(request.json)
-	
-	body = 'HAVE A CALENDAR'
+	ics_urls = request.json
+	body = str(
+		ics_combiner.combine_ics(ics_urls)
+	)
+
 	headers = { "Content-Type": "text/calendar" }
-	return make_response(body, 200, headers)
+	return make_response(body, 200)
 
 
 @app.route('/<string:name>')
