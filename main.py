@@ -11,13 +11,22 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def root():
 
-	ics_urls = request.json
-	body = str(
-		ics_combiner.combine_ics(ics_urls)
-	)
+	if request.method == 'POST':
 
-	headers = { "Content-Type": "text/calendar" }
-	return make_response(body, 200)
+		ics_urls = request.json
+		body = str(
+			ics_combiner.combine_ics(ics_urls)
+		)
+
+		headers = { "Content-Type": "text/calendar" }
+		return make_response(body, 200, headers)
+
+	else:
+		
+		body = "Hit this with a POST request to get a combined calendar. Read the project's README.md"
+
+		headers = { "Content-Type": "application/json" }
+		return make_response(body, 200, headers)
 
 
 @app.route('/<string:name>')
