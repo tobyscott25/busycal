@@ -1,18 +1,21 @@
 from flask import Flask, jsonify, abort, request, make_response
 from werkzeug.exceptions import HTTPException
-import mariadb
-import json
+from dotenv import load_dotenv
+import os, json, mariadb
 import ics_combiner
+
+# Load environment variables
+load_dotenv()
 
 # Create an instance of the class
 app = Flask(__name__)
 
 db_config = {
-	'host': 'localhost',
-	'port': 3306,
-	'user': 'root',
-	'password': '',
-	'database': 'test-schema'
+	'host': 	os.getenv('DATABASE_HOST'),
+	'port': int(os.getenv('DATABASE_PORT')),
+	'user': 	os.getenv('DATABASE_USER'),
+	'password': os.getenv('DATABASE_PASS'),
+	'database': os.getenv('DATABASE_NAME')
 }
 
 @app.route('/', methods=['GET', 'POST'])
