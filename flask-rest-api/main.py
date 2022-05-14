@@ -1,12 +1,19 @@
 from flask import Flask, jsonify, abort, request, make_response
 from werkzeug.exceptions import HTTPException
+import mariadb
 import json
 import ics_combiner
 
 # Create an instance of the class
 app = Flask(__name__)
 
-
+db_config = {
+	'host': 'localhost',
+	'port': 3306,
+	'user': 'root',
+	'password': '',
+	'database': 'test-schema'
+}
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -29,6 +36,28 @@ def root():
 
 		headers = { "Content-Type": "application/json" }
 		return make_response(body, 200, headers)
+
+
+
+
+# TEMPORARY ROUTE: MariaDB test and example before we start legitimately using it
+@app.route('/db-example', methods=['GET'])
+def index():
+
+	# Connect to MariaDB
+	db_connection = mariadb.connect(**db_config)
+	# Create a connection cursor
+	db_cursor = db_connection.cursor()
+	# Query MariaDB
+	db_cursor.execute("SELECT * FROM test-table")
+
+	# Get all results from the executed query
+	body = str(db_cursor.fetchall())
+
+	headers = { "Content-Type": "application/json" }
+	return make_response(body, 200, headers)
+
+
 
 
 @app.route('/<string:name>')
