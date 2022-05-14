@@ -23,7 +23,7 @@ $ . venv/bin/activate
 ### 3. Install pip dependancies within the virtualenv
 
 ```
-$ pip install flask python-dotenv ics requests mariadb
+$ pip install flask python-dotenv ics requests mariadb bcrypt
 ```
 
 ### 4. Create `.env` file
