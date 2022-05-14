@@ -7,6 +7,8 @@
 $ python3 -m venv venv
 ```
 
+> NOTE: Before you create the virtualenv, make sure you have the [MariaDB Connector/Python](https://mariadb.com/products/skysql/docs/connect/programming-languages/c/install/) installed on your computer so your python app can talk to your MariaDB server.
+
 ### 2. Activate the virtualenv
 
 ```sh
@@ -21,7 +23,7 @@ $ . venv/bin/activate
 ### 3. Install pip dependancies within the virtualenv
 
 ```
-$ pip install flask python-dotenv ics requests
+$ pip install flask python-dotenv ics requests mariadb
 ```
 
 ### 4. Create `.env` file
