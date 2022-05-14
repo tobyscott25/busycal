@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, abort, request, make_response
 from werkzeug.exceptions import HTTPException
 from dotenv import load_dotenv
-import os, json, mariadb
+import os, json, mariadb, bcrypt
 import ics_combiner
 
 # Load environment variables
@@ -44,8 +44,8 @@ def root():
 
 
 # TEMPORARY ROUTE: MariaDB test and example before we start legitimately using it
-@app.route('/db-example', methods=['GET'])
-def index():
+@app.route('/db-example')
+def db_example():
 
 	# Connect to MariaDB
 	db_connection = mariadb.connect(**db_config)
@@ -56,6 +56,35 @@ def index():
 
 	# Get all results from the executed query
 	body = str(db_cursor.fetchall())
+
+	headers = { "Content-Type": "application/json" }
+	return make_response(body, 200, headers)
+
+
+# TEMPORARY ROUTE: Testing hashing passwords with BCrypt
+@app.route('/hashing-test')
+def hashing_test():
+
+	password = 'MyPassWord'
+
+	# Encode the password string into a byte array, making it possible for bcrypt to hash it
+	encoded_password = password.encode('utf-8')
+
+	# Generate salt
+	bcrypt_salt = bcrypt.gensalt()
+
+	# Hash password
+	hash = bcrypt.hashpw(encoded_password, bcrypt_salt)
+
+	# Check that the raw password still matches the salted hash (WITHOUT USING THE SALT TO CHECK)
+	password_matches = bcrypt.checkpw(encoded_password, hash)
+
+	# Get all results from the executed query
+	body = {
+		"raw_password": password,
+		"salted_hash": hash.decode('utf-8'), # returned hash is encoded - we need to decode it to include it in a JSON response
+		"salted_hash_matches_raw": password_matches
+	}
 
 	headers = { "Content-Type": "application/json" }
 	return make_response(body, 200, headers)
