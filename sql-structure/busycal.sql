@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.4.21-MariaDB, for osx10.10 (x86_64)
 --
--- Host: localhost    Database: users
+-- Host: localhost    Database: busycal
 -- ------------------------------------------------------
 -- Server version	10.4.21-MariaDB
 
@@ -34,7 +34,7 @@ CREATE TABLE `user_info` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'users'
+-- Dumping routines for database 'busycal'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -46,4 +46,4 @@ CREATE TABLE `user_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-15 15:31:54
+-- Dump completed on 2022-05-15 17:58:04

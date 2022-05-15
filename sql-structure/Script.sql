@@ -1,6 +1,6 @@
-CREATE DATABASE users;
+CREATE DATABASE busycal;
 
-use users;
+use busycal;
 
 CREATE TABLE user_info (
 	user_id int NOT NULL AUTO_INCREMENT,
