@@ -16,20 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_info`
+-- Table structure for table `accounts`
 --
 
-DROP TABLE IF EXISTS `user_info`;
+DROP TABLE IF EXISTS `accounts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_info` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `accounts` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `verified` tinyint(1) DEFAULT 0,
   `display_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tokens`
+--
+
+DROP TABLE IF EXISTS `tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tokens` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `time_created` int(10) unsigned NOT NULL,
+  `accounts_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,4 +63,4 @@ CREATE TABLE `user_info` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-15 17:58:04
+-- Dump completed on 2022-05-15 18:59:53
