@@ -10,7 +10,7 @@
         </div>
         <div>
             <label for="email">Email Address</label>
-            <input type="text" name="email" id="email" @input="setEmail">
+            <input type="text" name="email" id="email" v-model="email">
             <p v-if="!isValidEmail">Not Valid</p>
         </div>
         <div>
@@ -33,12 +33,6 @@ export default {
             const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             return re.test(this.email);
         }
-    },
-    methods: {
-        setEmail(event){
-            this.email = event.target.value;
-        }
     }
-
 }
 </script>
