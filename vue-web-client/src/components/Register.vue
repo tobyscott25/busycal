@@ -25,14 +25,13 @@
 export default {
     data() {
         return {
-            email: "",
-            isValidEmail: false
+            email: ""
         }
     },
-    watch: {
-        email(emailInput){
+    computed: {
+        isValidEmail() {
             const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            this.isValidEmail = re.test(emailInput);
+            return re.test(this.email);
         }
     },
     methods: {
