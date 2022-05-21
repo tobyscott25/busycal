@@ -23,7 +23,11 @@ import Register from './components/Register.vue';
 </template>
 
 <style>
-@import '@/assets/base.css';
+/* @import '@/assets/base.css'; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #app {
   max-width: 1280px;
