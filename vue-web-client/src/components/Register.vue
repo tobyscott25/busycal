@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 button {
 	@apply bg-red-500 hover:bg-blue-700 text-white font-bold rounded-full
