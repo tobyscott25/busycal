@@ -46,11 +46,12 @@ export default {
 </script>
 
 <style>
+
 button {
-    @apply bg-red-500 hover:bg-blue-700 text-white font-bold rounded-full;
+	@apply bg-red-500 hover:bg-blue-700 text-white font-bold rounded-full
 }
 input {
-    @apply rounded border-purple-800
+	@apply rounded border-purple-800
 }
 
 </style>

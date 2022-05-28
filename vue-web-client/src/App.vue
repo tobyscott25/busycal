@@ -5,7 +5,7 @@
 <template>
 	<header>
 		<div class="wrapper">
-		<nav>
+		<nav class="text-3xl font-bold underline">
 			<RouterLink to="/">Home</RouterLink>
 			<RouterLink to="/about">About</RouterLink>
 		</nav>
@@ -14,8 +14,3 @@
 
 	<RouterView />
 </template>
-
-<style>
-	@import '@/assets/base.css';
-	
-</style>
