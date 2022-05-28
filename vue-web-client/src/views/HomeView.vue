@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+	import Register from '@/components/Register.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+	<div>
+		<h1>This is the home page</h1>
+
+		<Register></Register>
+
+	</div>
 </template>

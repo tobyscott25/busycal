@@ -46,12 +46,6 @@ export default {
 </script>
 
 <style>
-/* @import '@/assets/base.css'; */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 button {
     @apply bg-red-500 hover:bg-blue-700 text-white font-bold rounded-full;
 }
