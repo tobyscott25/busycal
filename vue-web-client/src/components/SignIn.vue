@@ -68,5 +68,5 @@
     }
     .invisible {
     visibility: hidden;
-  }
+    }
 </style>
