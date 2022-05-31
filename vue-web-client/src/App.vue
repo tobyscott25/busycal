@@ -5,7 +5,7 @@
 <template>
 	<header>
 		<div class="wrapper">
-		<nav class="text-3xl font-bold underline">
+		<nav>
 			<RouterLink to="/">Home</RouterLink>
 			<RouterLink to="/signin">Sign In</RouterLink>
 			<RouterLink to="/register">Register</RouterLink>
@@ -16,3 +16,12 @@
 
 	<RouterView />
 </template>
+
+<style scoped>
+	nav {
+		@apply bg-gray-800 text-3xl font-bold text-white no-underline
+	}
+	nav a {
+		@apply 
+	}
+</style>
