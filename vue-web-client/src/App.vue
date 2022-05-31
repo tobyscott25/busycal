@@ -7,6 +7,7 @@
 		<div class="wrapper">
 		<nav class="text-3xl font-bold underline">
 			<RouterLink to="/">Home</RouterLink>
+			<RouterLink to="/signin">Sign In</RouterLink>
 			<RouterLink to="/about">About</RouterLink>
 		</nav>
 		</div>
