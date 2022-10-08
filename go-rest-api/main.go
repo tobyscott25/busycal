@@ -12,7 +12,7 @@ func main() {
 	router.GET("/hello-world", helloWorld)
 	router.GET("/hello-world/:id", helloWorldWithID)
 
-	router.Run("localhost:3000")
+	router.Run("localhost:3003")
 }
 
 func helloWorld(c *gin.Context) {
