@@ -3,24 +3,38 @@ package main
 import (
 	"net/http"
 
+	"log"
+
 	"github.com/gin-gonic/gin"
 )
 
+// Creates a gin router with default middleware:
+// logger and recovery (crash-free) middleware
+func createRouter() *gin.Engine {
+
+	r := gin.Default()
+
+	r.POST("/combine-cals", combineCalendars)
+
+	// r.GET("/ping", func(c *gin.Context) {
+	// 	c.String(http.StatusOK, "pong")
+	// })
+
+	return r
+}
+
 func main() {
-	router := gin.Default()
-
-	router.GET("/hello-world", helloWorld)
-	router.GET("/hello-world/:id", helloWorldWithID)
-
-	router.Run("localhost:3003")
+	r := createRouter()
+	r.Run("localhost:3003")
 }
 
-func helloWorld(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, "Hello World!")
-}
+func combineCalendars(c *gin.Context) {
 
-func helloWorldWithID(c *gin.Context) {
-	// id := c.Param("id")
+	request := c.Request
+	log.Println(request)
 
-	c.IndentedJSON(http.StatusNotFound, gin.H{"error": "World not found"})
+	c.IndentedJSON(http.StatusOK, gin.H{
+		"combine": "This will return an ICS when finished.",
+	})
+
 }
